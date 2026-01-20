@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #020617, #0f172a, #1e293b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    /* MAIN BOX (OLD STYLE) */
+    .card {
+      width: 380px;
+      padding: 50px 40px;
+      background: rgba(2,6,23,0.9);
+      border-radius: 26px;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.7);
+      text-align: center;
+      animation: pop 0.8s cubic-bezier(.17,.89,.32,1.49) forwards;
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: scale(0.75);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    h1 {
+      font-family: 'Anton', sans-serif;
+      letter-spacing: 3px;
+      font-size: 2.2rem;
+      margin-bottom: 28px;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px;
+      margin: 12px 0;
+      border-radius: 14px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background: #0f172a;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 26px;
+      padding: 16px;
+      border: none;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #22d3ee, #ec4899);
+      color: white;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.25s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .error {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: #fecaca;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- LOGIN BOX -->
+  <div class="card">
+    <h1>IT’LL MATTER</h1>
+
+    <input type="text" id="name" placeholder="Your name">
+    <input type="password" id="password" placeholder="Password">
+
+    <button onclick="checkAccess()">CONTINUE</button>
+
+    <div class="error" id="error">Wrong name or password</div>
+  </div>
+
+  <script>
+    // 🔑 COMMON PASSWORD
+    const PASSWORD = "VIDAI";
+
+    // ✅ ALLOWED NAMES (FULL LIST)
+    const allowedNames = [
+      "Aafeen","Kartikey",
+
+      "Abhay","Abhinav","Abhinav S","Adarsh","Adarsh P","Aditya","Aditya V",
+      "Aditya Soni","Akshat","Amit","Ankita","Ansh","Ansh Varma","Anupam",
+      "Anupam T","Anurag","Anurag T","Anurudh","Anur","Atharwa",
+      "Ayush Mishra","Ayush Patel","Deepti","Devashish","Dhruv T",
+      "Divyansh","Divyansh M","Gaurav","Harsh","Hemant","Himanshu Mishra",
+      "Jagriti","Komal","Manya","Mohammad Anas","Nami","Om Shrivastava",
+      "Ruchi","Saksham","Sankalp","Sankalp S","Saryu","Shanu","Shiv Kant",
+
+      "Shivanshu","Shruti Gupta","Siddhayant","Surya","Vaishnav","Yash",
+      "Aditi","Adityavardhan","Ananya","Anjuli","Anshu","Anushka Baghel",
+      "Arpit","Arti","Arya","Ataya","Avani","Avantika","Fazil",
+      "Himanshu T","Jyoti","Kanchi","Khushi","Lakshita","Parish",
+      "Prateek","Purnima","Ruchi P","Sakshi","Sandhya","Satyam Saket",
+      "Somya","Subh","Sudhanshu","Tanushree","Vritika",
+
+      "Abhay Patel","Amar","Ambika","Anchal","Anil","Anisha","Anmol",
+      "Ansh Agnihotri","Anshuman","Anubha","Anushka T","Aradhy",
+      "Ayushi","Ayushman","Dhruv S","Eshita","Gahana","Ishika","Janhvi",
+      "Jatin","Kartik","Kumkum","Lovedeep","Mahak","Mohak","Om Soni",
+      "Praveen","Purvee","Ratnesh","Rishi Dwivedi","Rishi Gupta","Riya",
+      "Ronak","Sanchita","Sanskriti","Sarthak","Satyam Yadav","Shikhar",
+      "Shivam","Shruti Singh","Siddharth","Simran","Sumit","Swarali",
+      "Udit","Ujjawal","Vaishno","Yuvraj",
+
+      "Akshra","Arpita","Divyani","Divyanjali","Divyansh S","Kritika",
+      "Muskan","Satyam U","Shrejal"
+    ];
+
+    function checkAccess() {
+      const name = document.getElementById("name").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const error = document.getElementById("error");
+
+      if (allowedNames.includes(name) && pass === PASSWORD) {
+        localStorage.setItem("currentUser", name);
+        window.location.href = "meme.html"; // 🔗 CONNECTED
+      } else {
+        error.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>

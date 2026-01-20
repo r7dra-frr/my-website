@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- MODERN FUN FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #020617, #0f172a);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      animation: popIn 0.8s cubic-bezier(.17,.89,.32,1.49) forwards;
+      opacity: 0;
+    }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+      from {
+        opacity: 0;
+        transform: scale(0.7);
+      }
+    }
+
+    h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.6rem;
+      letter-spacing: 3px;
+      margin-bottom: 18px;
+    }
+
+    img {
+      max-width: 340px;
+      border-radius: 22px;
+      box-shadow: 0 35px 90px rgba(0,0,0,0.7);
+      margin-bottom: 22px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    p {
+      opacity: 0.9;
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 14px 46px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22d3ee, #ec4899);
+      color: white;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 18px 50px rgba(236,72,153,0.6);
+    }
+
+    button:hover {
+      transform: scale(1.15);
+      box-shadow: 0 30px 70px rgba(56,189,248,1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1 id="title">WAIT 😭</h1>
+
+    <img id="memeImg" src="" alt="meme">
+
+    <p>You knew this was coming.</p>
+
+    <button onclick="goNext()">CONTINUE</button>
+  </div>
+
+  <script>
+    // GET USER NAME
+    const user = localStorage.getItem("currentUser");
+
+    // MAP NAME -> MEME IMAGE + TITLE
+    const memeData = {
+      "Aafeen": {
+        title: "Aafeen be like",
+        img: "images/aafeen-meme.jpg"
+      },
+      "Kartikey": {
+        title: "Kartikey fr 💀",
+        img: "images/kartikey-meme.jpg"
+      }
+    };
+
+    // APPLY DATA
+    if (memeData[user]) {
+      document.getElementById("title").innerText = memeData[user].title;
+      document.getElementById("memeImg").src = memeData[user].img;
+    } else {
+      document.getElementById("title").innerText = "SURPRISE 👀";
+      document.getElementById("memeImg").style.display = "none";
+    }
+
+    function goNext() {
+      window.location.href = "final.html";
+    }
+  </script>
+
+</body>
+</html>

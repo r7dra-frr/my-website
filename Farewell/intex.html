@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@300;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(circle at top, #020617, #000000);
+      overflow: hidden;
+      font-family: 'Space Grotesk', sans-serif;
+      color: white;
+    }
+
+    /* FLOATING PARTICLES */
+    .particles span {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 1;
+      }
+    }
+
+    /* CENTER CONTENT */
+    .content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3.4rem;
+      letter-spacing: 6px;
+      margin-bottom: 20px;
+      animation: rise 2s ease forwards;
+    }
+
+    @keyframes rise {
+      from {
+        transform: translateY(60px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    p {
+      max-width: 500px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeText 2s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes fadeText {
+      to { opacity: 0.85; }
+    }
+
+    .btn {
+      margin-top: 60px;
+      padding: 16px 50px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22d3ee, #ec4899);
+      color: white;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      cursor: pointer;
+      box-shadow: 0 0 50px rgba(236,72,153,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      animation: btnIn 1.5s ease forwards;
+      animation-delay: 3s;
+    }
+
+    @keyframes btnIn {
+      to { opacity: 1; }
+    }
+
+    .btn:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 90px rgba(56,189,248,1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PARTICLES -->
+  <div class="particles">
+    <!-- generated via HTML only -->
+    <span style="left:10%; animation-duration:18s;"></span>
+    <span style="left:20%; animation-duration:14s;"></span>
+    <span style="left:30%; animation-duration:22s;"></span>
+    <span style="left:40%; animation-duration:16s;"></span>
+    <span style="left:50%; animation-duration:20s;"></span>
+    <span style="left:60%; animation-duration:17s;"></span>
+    <span style="left:70%; animation-duration:24s;"></span>
+    <span style="left:80%; animation-duration:15s;"></span>
+    <span style="left:90%; animation-duration:19s;"></span>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <h1>THIS ISN’T JUST A GOODBYE</h1>
+    <p>
+      Some moments don’t end —  
+      they quietly become part of who we are.
+    </p>
+
+    <button class="btn" onclick="window.location.href='page2.html'">
+      BEGIN
+    </button>
+  </div>
+
+</body>
+</html>

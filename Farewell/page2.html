@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(180deg, #0ea5e9, #ec4899);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Space Grotesk', sans-serif;
+      color: white;
+    }
+
+    /* FUN CLOUDS */
+    .cloud {
+      position: absolute;
+      width: 200px;
+      height: 70px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 50px;
+      filter: blur(10px);
+      animation: cloudMove 20s linear infinite;
+    }
+
+    .cloud:nth-child(1) { top: 20%; animation-duration: 22s; }
+    .cloud:nth-child(2) { top: 45%; animation-duration: 18s; }
+    .cloud:nth-child(3) { top: 65%; animation-duration: 26s; }
+
+    @keyframes cloudMove {
+      from { transform: translateX(-40vw); }
+      to { transform: translateX(140vw); }
+    }
+
+    /* iOS AIRPLANE (STRAIGHT, CLEAN) */
+    .plane {
+      position: absolute;
+      left: -300px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 200px;
+      animation: fly 2.4s linear forwards;
+      z-index: 5;
+    }
+
+    @keyframes fly {
+      from {
+        transform: translate(-300px, -50%);
+      }
+      to {
+        transform: translate(140vw, -50%);
+      }
+    }
+
+    /* COLORFUL SMOKE */
+    .smoke {
+      position: absolute;
+      top: 50%;
+      left: -300px;
+      height: 260px;
+      width: 0;
+      background: linear-gradient(
+        to right,
+        rgba(236,72,153,0.9),
+        rgba(56,189,248,0.9),
+        rgba(167,139,250,0.8),
+        transparent
+      );
+      filter: blur(32px);
+      transform: translateY(-50%);
+      animation: smokeTrail 2.4s linear forwards;
+      z-index: 4;
+    }
+
+    @keyframes smokeTrail {
+      from { width: 0; }
+      to { width: 180vw; }
+    }
+
+    /* CONTENT */
+    .content {
+      text-align: center;
+      opacity: 0;
+      animation: popIn 0.6s ease-out forwards;
+      animation-delay: 2.4s;
+      z-index: 10;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.85);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
+
+    .next-btn {
+      padding: 14px 46px;
+      border: none;
+      border-radius: 999px;
+      background: white;
+      color: #ec4899;
+      font-weight: 600;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .next-btn:hover {
+      transform: scale(1.15);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎵 HOUSE MUSIC -->
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- CLOUDS -->
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+
+  <!-- SMOKE -->
+  <div class="smoke"></div>
+
+  <!-- PLANE -->
+  <div class="plane">✈︎</div>
+
+  <!-- TEXT -->
+  <div class="content">
+    <h1>READY?</h1>
+    <p>Let the vibe take over ✨</p>
+    <button class="next-btn" onclick="window.location.href='access.html'">
+      NEXT
+    </button>
+  </div>
+
+</body>
+</html>
